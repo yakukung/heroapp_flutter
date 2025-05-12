@@ -4,7 +4,7 @@ import 'package:flutter_application_1/config/internal_config.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
-class Appdata with ChangeNotifier {
+class Appdata extends ChangeNotifier {
   String _username = '';
   int _uid = 0;
   String _email = '';
@@ -34,8 +34,8 @@ class Appdata with ChangeNotifier {
     notifyListeners();
   }
 
-  set profileImage(String value) {
-    _profileImage = value;
+  void setProfileImage(String url) {
+    _profileImage = url;
     notifyListeners();
   }
 

@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(
-          top: 100,
+          top: 80,
           left: 40,
           right: 40,
           bottom: 20,
@@ -87,7 +87,6 @@ class _LoginPageState extends State<LoginPage> {
               style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
             ),
             const SizedBox(height: 20),
-            // Password Field
             TextField(
               controller: passwordCtl,
               obscureText: _obscureText,
@@ -119,7 +118,6 @@ class _LoginPageState extends State<LoginPage> {
                 fontSize: 16,
               ),
             ),
-            // Forgot Password
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15),
               child: Align(
@@ -139,7 +137,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
-            // Login Button
             FilledButton(
               onPressed: isLoading ? null : login,
               style: FilledButton.styleFrom(
@@ -163,7 +160,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
             ),
             const SizedBox(height: 40),
-            // Divider
             Row(
               children: [
                 Expanded(
@@ -211,7 +207,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 150),
+            const SizedBox(height: 120),
             // Register Link
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

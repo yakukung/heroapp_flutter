@@ -44,7 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(
-          top: 80,
+          top: 40,
           left: 40,
           right: 40,
           bottom: 10,
