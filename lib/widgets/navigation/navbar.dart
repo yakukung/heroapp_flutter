@@ -21,7 +21,11 @@ class NavbarUser extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            icon: Icon(Icons.menu, color: Colors.black, size: 32),
+            icon: Icon(
+              Icons.dashboard_rounded,
+              color: Colors.black87,
+              size: 32,
+            ),
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
@@ -44,6 +48,8 @@ class NavbarUser extends StatelessWidget implements PreferredSizeWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ],
           ),

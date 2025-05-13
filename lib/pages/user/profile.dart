@@ -79,54 +79,74 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Column(
               children: [
                 SizedBox(height: 32),
-                GestureDetector(
-                  onTap: _uploadProfileImage,
-                  child: Stack(
-                    alignment: Alignment.bottomRight,
-                    children: [
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundColor: Colors.white,
-                        child: ClipOval(
-                          child:
-                              appData.profileImage.isNotEmpty
-                                  ? Image.network(
-                                    appData.profileImage,
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  )
-                                  : Image.asset(
-                                    'assets/images/default/avatar.png',
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),
-                        ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: _uploadProfileImage,
+                      child: Stack(
+                        alignment: Alignment.bottomRight,
+                        children: [
+                          CircleAvatar(
+                            radius: 60,
+                            backgroundColor: Colors.white,
+                            child: ClipOval(
+                              child:
+                                  appData.profileImage.isNotEmpty
+                                      ? Image.network(
+                                        appData.profileImage,
+                                        width: 120,
+                                        height: 120,
+                                        fit: BoxFit.cover,
+                                      )
+                                      : Image.asset(
+                                        'assets/images/default/avatar.png',
+                                        width: 120,
+                                        height: 120,
+                                        fit: BoxFit.cover,
+                                      ),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(6),
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                        ],
                       ),
-                      Container(
-                        padding: EdgeInsets.all(6),
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          shape: BoxShape.circle,
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          appData.username.isNotEmpty
+                              ? appData.username
+                              : 'ชื่อผู้ใช้',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        child: Icon(Icons.edit, color: Colors.white, size: 16),
-                      ),
-                    ],
-                  ),
+                        Text(
+                          appData.email.isNotEmpty
+                              ? appData.email
+                              : 'example@email.com',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                SizedBox(height: 16),
-                Text(
-                  appData.username.isNotEmpty ? appData.username : 'ชื่อผู้ใช้',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 4),
-                Text(
-                  appData.email.isNotEmpty
-                      ? appData.email
-                      : 'example@email.com',
-                  style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                ),
+
                 SizedBox(height: 24),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 32.0),
@@ -147,12 +167,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 SizedBox(height: 32),
-
-                ListTile(
-                  leading: Icon(Icons.logout, color: Colors.red),
-                  title: Text('ออกจากระบบ'),
-                  onTap: () {},
-                ),
               ],
             ),
           );

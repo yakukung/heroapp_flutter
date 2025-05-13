@@ -208,11 +208,12 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
+                      const SizedBox(height: 25),
                       Row(
                         children: [
                           const SizedBox(width: 35),
                           Text(
-                            'ชีตใหม่ล่าสุด',
+                            'ชีตยอดฮิต',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w800,

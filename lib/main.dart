@@ -9,7 +9,7 @@ import 'package:flutter_application_1/pages/user/home.dart';
 import 'package:flutter_application_1/pages/user/profile.dart';
 import 'package:flutter_application_1/pages/user/upload.dart';
 import 'package:flutter_application_1/services/navigation_service.dart';
-import 'package:flutter_application_1/widgets/layout/sidebar_user.dart';
+import 'package:flutter_application_1/widgets/layout/main_sidebar.dart';
 import 'package:flutter_application_1/widgets/navigation/navbar.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
