@@ -28,7 +28,7 @@ class SideBar extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CircleAvatar(
-                      radius: 32,
+                      radius: 35,
                       backgroundColor: Colors.white,
                       child: ClipOval(
                         child:

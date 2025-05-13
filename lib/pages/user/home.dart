@@ -208,6 +208,57 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
+                      Row(
+                        children: [
+                          const SizedBox(width: 35),
+                          Text(
+                            'ชีตใหม่ล่าสุด',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 25),
+                            for (int i = 0; i < products.length; i++)
+                              ProductCard(
+                                product: Product(
+                                  imageUrl:
+                                      (products[i]['imageUrl'] != null)
+                                          ? products[i]['imageUrl']
+                                              .toString()
+                                              .replaceAll('`', '')
+                                              .trim()
+                                          : null,
+                                  title: products[i]['title'] ?? '',
+                                  author: products[i]['author'] ?? '',
+                                  rating:
+                                      (products[i]['rating'] ?? 0).toDouble(),
+                                  price: products[i]['price']?.toString() ?? '',
+                                  isFavorite:
+                                      isFavoriteList.length > i
+                                          ? isFavoriteList[i]
+                                          : false,
+                                ),
+                                onFavoriteTap: () {
+                                  setState(() {
+                                    if (isFavoriteList.length > i) {
+                                      isFavoriteList[i] = !isFavoriteList[i];
+                                    }
+                                  });
+                                },
+                              ),
+                            const SizedBox(width: 25),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),

@@ -72,7 +72,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF5F6FA),
+      backgroundColor: Colors.white,
       body: Consumer<Appdata>(
         builder: (context, appData, child) {
           return SingleChildScrollView(
