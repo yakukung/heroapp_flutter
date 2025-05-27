@@ -166,8 +166,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               label: const Text(
                                 'แก้ไขข้อมูลส่วนตัว',
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -190,7 +191,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 'แก้ไขแพ็กเกจสมาชิกของคุณ',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -216,7 +217,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               label: const Text(
                                 'ยอดเงินคงเหลือ',
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w800,
                                 ),
@@ -239,7 +240,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 'รายการชีต\nทั้งหมดของคุณ',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.black,
                                   fontWeight: FontWeight.w800,
                                 ),
