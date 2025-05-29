@@ -2,6 +2,8 @@ class Product {
   final String? id;
   final String? imageUrl;
   final String? title;
+  final String? name;
+  final String? description;
   final String? author;
   final double? rating;
   final String? price;
@@ -11,6 +13,8 @@ class Product {
     this.id,
     this.imageUrl,
     this.title,
+    this.name,
+    this.description,
     this.author,
     this.rating,
     this.price,
@@ -19,7 +23,7 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-      id: json['id'],
+      id: json['id']?.toString(),
       imageUrl: json['imageUrl'],
       title: json['title'],
       author: json['author'],

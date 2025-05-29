@@ -4,8 +4,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/config/internal_config.dart';
 import 'package:flutter_application_1/models/product_model.dart';
+import 'package:flutter_application_1/pages/user/sheet/preview_sheet.dart';
 import 'package:flutter_application_1/widgets/product/product_card.dart';
 import 'package:flutter_application_1/widgets/search/search_sheet_box.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/services/app_data.dart';
@@ -177,32 +179,42 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             const SizedBox(width: 25),
                             for (int i = 0; i < products.length; i++)
-                              ProductCard(
-                                product: Product(
-                                  imageUrl:
-                                      (products[i]['imageUrl'] != null)
-                                          ? products[i]['imageUrl']
-                                              .toString()
-                                              .replaceAll('`', '')
-                                              .trim()
-                                          : null,
-                                  title: products[i]['title'] ?? '',
-                                  author: products[i]['author'] ?? '',
-                                  rating:
-                                      (products[i]['rating'] ?? 0).toDouble(),
-                                  price: products[i]['price']?.toString() ?? '',
-                                  isFavorite:
-                                      isFavoriteList.length > i
-                                          ? isFavoriteList[i]
-                                          : false,
-                                ),
-                                onFavoriteTap: () {
-                                  setState(() {
-                                    if (isFavoriteList.length > i) {
-                                      isFavoriteList[i] = !isFavoriteList[i];
-                                    }
-                                  });
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(
+                                    () => PreviewSheetPage(
+                                      productId: products[i]['id'].toString(),
+                                    ),
+                                  );
                                 },
+                                child: ProductCard(
+                                  product: Product(
+                                    imageUrl:
+                                        (products[i]['imageUrl'] != null)
+                                            ? products[i]['imageUrl']
+                                                .toString()
+                                                .replaceAll('`', '')
+                                                .trim()
+                                            : null,
+                                    title: products[i]['title'] ?? '',
+                                    author: products[i]['author'] ?? '',
+                                    rating:
+                                        (products[i]['rating'] ?? 0).toDouble(),
+                                    price:
+                                        products[i]['price']?.toString() ?? '',
+                                    isFavorite:
+                                        isFavoriteList.length > i
+                                            ? isFavoriteList[i]
+                                            : false,
+                                  ),
+                                  onFavoriteTap: () {
+                                    setState(() {
+                                      if (isFavoriteList.length > i) {
+                                        isFavoriteList[i] = !isFavoriteList[i];
+                                      }
+                                    });
+                                  },
+                                ),
                               ),
                             const SizedBox(width: 25),
                           ],
@@ -229,32 +241,42 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             const SizedBox(width: 25),
                             for (int i = 0; i < products.length; i++)
-                              ProductCard(
-                                product: Product(
-                                  imageUrl:
-                                      (products[i]['imageUrl'] != null)
-                                          ? products[i]['imageUrl']
-                                              .toString()
-                                              .replaceAll('`', '')
-                                              .trim()
-                                          : null,
-                                  title: products[i]['title'] ?? '',
-                                  author: products[i]['author'] ?? '',
-                                  rating:
-                                      (products[i]['rating'] ?? 0).toDouble(),
-                                  price: products[i]['price']?.toString() ?? '',
-                                  isFavorite:
-                                      isFavoriteList.length > i
-                                          ? isFavoriteList[i]
-                                          : false,
-                                ),
-                                onFavoriteTap: () {
-                                  setState(() {
-                                    if (isFavoriteList.length > i) {
-                                      isFavoriteList[i] = !isFavoriteList[i];
-                                    }
-                                  });
+                              GestureDetector(
+                                onTap: () {
+                                  Get.to(
+                                    () => PreviewSheetPage(
+                                      productId: products[i]['id'].toString(),
+                                    ),
+                                  );
                                 },
+                                child: ProductCard(
+                                  product: Product(
+                                    imageUrl:
+                                        (products[i]['imageUrl'] != null)
+                                            ? products[i]['imageUrl']
+                                                .toString()
+                                                .replaceAll('`', '')
+                                                .trim()
+                                            : null,
+                                    title: products[i]['title'] ?? '',
+                                    author: products[i]['author'] ?? '',
+                                    rating:
+                                        (products[i]['rating'] ?? 0).toDouble(),
+                                    price:
+                                        products[i]['price']?.toString() ?? '',
+                                    isFavorite:
+                                        isFavoriteList.length > i
+                                            ? isFavoriteList[i]
+                                            : false,
+                                  ),
+                                  onFavoriteTap: () {
+                                    setState(() {
+                                      if (isFavoriteList.length > i) {
+                                        isFavoriteList[i] = !isFavoriteList[i];
+                                      }
+                                    });
+                                  },
+                                ),
                               ),
                             const SizedBox(width: 25),
                           ],
