@@ -43,6 +43,8 @@ dependencies:
   firebase_storage: ^12.4.5
   path: ^1.9.1
   intl: ^0.20.2
+  cloud_firestore: ^5.6.8
+  palette_generator: ^0.3.3+7
 
 dev_dependencies:
   flutter_test:

@@ -4,8 +4,14 @@ import '../../models/product_model.dart';
 class ProductCard extends StatelessWidget {
   final Product product;
   final VoidCallback? onFavoriteTap;
+  final Color? backgroundColor;
 
-  const ProductCard({super.key, required this.product, this.onFavoriteTap});
+  const ProductCard({
+    super.key,
+    required this.product,
+    this.onFavoriteTap,
+    this.backgroundColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +21,7 @@ class ProductCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 8),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xFFEEF0FD),
+        color: backgroundColor ?? const Color(0xFFEEF0FD),
         borderRadius: BorderRadius.circular(28),
       ),
       child: Column(
@@ -97,7 +103,7 @@ class ProductCard extends StatelessWidget {
                   child: GestureDetector(
                     onTap: onFavoriteTap,
                     child: Icon(
-                      Icons.star,
+                      Icons.star_rounded,
                       color: product.isFavorite ? Colors.amber : Colors.black12,
                       size: 32,
                     ),

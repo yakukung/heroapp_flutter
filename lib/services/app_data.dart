@@ -43,19 +43,28 @@ class Appdata extends ChangeNotifier {
 
   Future<void> fetchUserData() async {
     GetStorage gs = GetStorage();
-    uid = gs.read('uid');
-    final response = await http.get(Uri.parse('$API_ENDPOINT/users/$uid'));
+    _uid = gs.read('uid') ?? 0;
 
-    if (response.statusCode == 200) {
-      final userData = jsonDecode(response.body);
-      _username = userData['username'] ?? '';
-      _uid = int.tryParse(userData['uid'].toString()) ?? 0;
-      _email = userData['email'] ?? '';
-      _profileImage = userData['profile_image'] ?? '';
-      _errorMessage = '';
-      notifyListeners();
+    if (_uid != 0) {
+      final response = await http.get(Uri.parse('$API_ENDPOINT/users/$_uid'));
+
+      if (response.statusCode == 200) {
+        final userData = jsonDecode(response.body);
+        _username = userData['username'] ?? '';
+        _uid = int.tryParse(userData['uid'].toString()) ?? 0;
+        _email = userData['email'] ?? '';
+        _profileImage = userData['profile_image'] ?? '';
+        _errorMessage = '';
+        notifyListeners();
+      } else {
+        _errorMessage = 'ไม่สามารถดึงข้อมูลผู้ใช้ได้: ${response.statusCode}';
+        notifyListeners();
+      }
     } else {
-      _errorMessage = 'ไม่สามารถดึงข้อมูลผู้ใช้ได้: ${response.statusCode}';
+      _username = '';
+      _email = '';
+      _profileImage = '';
+      _errorMessage = '';
       notifyListeners();
     }
   }

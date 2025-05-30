@@ -9,6 +9,7 @@ import 'package:flutter_application_1/pages/user/home.dart';
 import 'package:flutter_application_1/pages/user/profile.dart';
 import 'package:flutter_application_1/pages/user/upload.dart';
 import 'package:flutter_application_1/services/navigation_service.dart';
+import 'package:flutter_application_1/services/product_data.dart';
 import 'package:flutter_application_1/widgets/layout/main_sidebar.dart';
 import 'package:flutter_application_1/widgets/navigation/navbar.dart';
 import 'package:get/get.dart';
@@ -37,19 +38,43 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final GetStorage storage = GetStorage();
-    final dynamic uid = storage.read('uid');
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => Appdata())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => Appdata()),
+        ChangeNotifierProvider(create: (_) => ProductData()),
+      ],
       child: GetMaterialApp(
         title: 'heroapp Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
           fontFamily: 'SukhumvitSet',
         ),
-        home: uid == null ? IntroPage() : MainPage(),
+        home: AuthWrapper(),
       ),
     );
+  }
+}
+
+class AuthWrapper extends StatefulWidget {
+  const AuthWrapper({super.key});
+
+  @override
+  State<AuthWrapper> createState() => _AuthWrapperState();
+}
+
+class _AuthWrapperState extends State<AuthWrapper> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<Appdata>(context, listen: false).fetchUserData();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final appData = Provider.of<Appdata>(context);
+    return appData.uid == 0 ? IntroPage() : MainPage();
   }
 }
 
