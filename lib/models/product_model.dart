@@ -28,7 +28,7 @@ class Product {
       title: json['title'],
       author: json['author'],
       rating: json['rating']?.toDouble(),
-      price: json['price'],
+      price: json['price']?.toString(),
       isFavorite: json['isFavorite'] ?? false,
     );
   }

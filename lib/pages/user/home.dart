@@ -20,37 +20,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // Remove local state for products, isLoading, errorMessage, and _productColors
-  // bool isLoading = true;
-  // String errorMessage = '';
-  // List<Map<String, dynamic>> products = [];
   List<bool> isFavoriteList = [];
-  // Map<String, Color> _productColors = {};
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<Appdata>(context, listen: false).fetchUserData();
-      // Call fetchProducts from ProductData provider
       Provider.of<ProductData>(context, listen: false).fetchProducts();
     });
-
-    // Remove the local check and call
-    // if (products.isEmpty) {
-    //   _fetchProducts();
-    // }
   }
-
-  // Remove _fetchProducts method
-  // Future<void> _fetchProducts() async { ... }
-
-  // Remove _updateProductColors method
-  // Future<void> _updateProductColors() async { ... }
 
   @override
   Widget build(BuildContext context) {
-    // Consume ProductData provider
     return Consumer<ProductData>(
       builder: (context, productData, child) {
         final isLoading = productData.isLoading;
@@ -90,9 +72,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           const SizedBox(height: 20),
                           ElevatedButton(
-                            onPressed:
-                                productData
-                                    .fetchProducts, // Call fetchProducts from provider
+                            onPressed: productData.fetchProducts,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF2A5DB9),
                               shape: RoundedRectangleBorder(
@@ -176,8 +156,11 @@ class _HomePageState extends State<HomePage> {
                                             (products[i]['rating'] ?? 0)
                                                 .toDouble(),
                                         price:
-                                            products[i]['price']?.toString() ??
-                                            '',
+                                            products[i]['price'] == 0
+                                                ? 'ฟรี'
+                                                : products[i]['price']
+                                                        ?.toString() ??
+                                                    '',
                                         isFavorite:
                                             isFavoriteList.length > i
                                                 ? isFavoriteList[i]
@@ -186,8 +169,7 @@ class _HomePageState extends State<HomePage> {
                                       backgroundColor:
                                           productColors[products[i]['id']
                                               .toString()] ??
-                                          Colors
-                                              .white, // ส่งสีที่ดึงมาให้ ProductCard
+                                          Colors.white,
                                       onFavoriteTap: () {
                                         setState(() {
                                           if (isFavoriteList.length > i) {

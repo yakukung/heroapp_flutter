@@ -75,13 +75,12 @@ class _PreviewSheetPageState extends State<PreviewSheetPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Display Image
                     if (product?.imageUrl != null)
                       Center(
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(
-                            product!.imageUrl!,
+                            product!.imageUrl!.replaceAll('`', '').trim(),
                             height: 400,
                             width: double.infinity,
                             fit: BoxFit.cover,
@@ -90,7 +89,6 @@ class _PreviewSheetPageState extends State<PreviewSheetPage> {
                       ),
                     SizedBox(height: 24),
 
-                    // Title and Favorite Icon
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -116,15 +114,12 @@ class _PreviewSheetPageState extends State<PreviewSheetPage> {
                     ),
                     SizedBox(height: 8),
 
-                    // Author
                     if (product?.author != null)
                       Text(
                         'โดย ${product!.author}',
                         style: TextStyle(fontSize: 18, color: Colors.grey[700]),
                       ),
                     SizedBox(height: 16),
-
-                    // Rating and Price
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -144,7 +139,9 @@ class _PreviewSheetPageState extends State<PreviewSheetPage> {
                           ),
                         if (product?.price != null)
                           Text(
-                            'ราคา: ${product!.price}',
+                            double.tryParse(product!.price ?? '0') == 0
+                                ? 'ราคา: ฟรี'
+                                : 'ราคา: ${product!.price}',
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
@@ -155,7 +152,6 @@ class _PreviewSheetPageState extends State<PreviewSheetPage> {
                     ),
                     SizedBox(height: 24),
 
-                    // Description
                     if (product?.description != null)
                       Text(
                         product!.description!,
